@@ -23,3 +23,18 @@ class Myqueue:
             return None
         else:
             return self.queue_list[-1]
+
+    def enqueue(self, value):
+        # Complexity: O(1)
+        self.queue_list.append(value)
+
+    def dequeue(self):
+        # Complexity: O(n)
+        # Here we have implemented queue using python list. However, if the queue is implemented using a Linked list,
+        # the time complexity can be optimized to O(1).
+        if self.is_empty():
+            return None
+        else:
+            head = self.front()
+            self.queue_list.remove(head)
+            return head
