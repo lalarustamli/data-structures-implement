@@ -28,7 +28,7 @@ class Myqueue:
         # Complexity: O(1)
         self.queue_list.append(value)
 
-    def dequeue(self):
+    def deque(self):
         # Complexity: O(n)
         # Here we have implemented queue using python list. However, if the queue is implemented using a Linked list,
         # the time complexity can be optimized to O(1).

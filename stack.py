@@ -27,3 +27,14 @@ class MyStack:
             return None
         else:
             return self.stack_list.pop()
+
+
+def check_balanced(string):
+    # Complexity: O(n)
+    stack = MyStack()
+    for i in string:
+        if i == '(':
+            stack.push(i)
+        else:
+            stack.pop(i)
+    return stack.stack_list == []
