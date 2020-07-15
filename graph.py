@@ -16,7 +16,7 @@ class Graph:
         # Complexity: O (1)
         # Add edge for directed graph
         if source < self.vertices and destination < self.vertices:
-            self.array[source].insert_at_head(destination)
+            self.array[source].insert_at_tail(destination)
             # for undirected graph:
             #self.array[destination].insert_at_head(source)
 
@@ -32,9 +32,33 @@ class Graph:
             print(" None ")
 
 
-a = Graph(3)
+a = Graph(6)
 a.add_edge(0,1)
 a.add_edge(0,2)
-a.print_graph()
-print(a.array[0].get_head().data)
 
+a.add_edge(1,3)
+a.add_edge(1,4)
+a.add_edge(2,5)
+a.add_edge(4,5)
+a.print_graph()
+# print(a.array[0].get_head().data)
+
+visited = []
+que = []
+def bfs(graph,source):
+    visited.append(source)
+    que.append(source)
+    result = ""
+    while que:
+        elem = que.pop(0)
+        temp = graph.array[elem].head
+        result += str(elem)
+        while temp:
+            if temp.data not in visited:
+                visited.append(temp.data)
+                que.append(temp.data)
+            temp=temp.next_element
+    print(result)
+
+
+bfs(a,0)
