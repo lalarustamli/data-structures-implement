@@ -34,18 +34,21 @@ class Graph:
 
 a = Graph(6)
 a.add_edge(0,1)
-a.add_edge(0,2)
-
-a.add_edge(1,3)
-a.add_edge(1,4)
-a.add_edge(2,5)
-a.add_edge(4,5)
+a.add_edge(1,2)
+a.add_edge(2,0)
+#
+a.add_edge(3,0)
+a.add_edge(3,1)
+# a.add_edge(1,4)
+# a.add_edge(2,5)
+# a.add_edge(4,1)
 a.print_graph()
 # print(a.array[0].get_head().data)
 
-visited = []
-que = []
+
 def bfs(graph,source):
+    visited = []
+    que = []
     visited.append(source)
     que.append(source)
     result = ""
@@ -57,8 +60,52 @@ def bfs(graph,source):
             if temp.data not in visited:
                 visited.append(temp.data)
                 que.append(temp.data)
+            temp = temp.next_element
+    # if len(result) == graph.vertices:
+    #     print("MOTHER!")
+    # print(result)
+    return result
+
+
+vis = set()
+r = []
+def dfs(graph,source):
+    r.append(source)
+    if source not in vis:
+        vis.add(source)
+        temp = graph.array[source].head
+        while temp:
+            dfs(graph,temp.data)
             temp=temp.next_element
+        return
+    result = ''
+    for item in r:
+        result += str(item)
     print(result)
 
 
-bfs(a,0)
+
+# dfs(a,0)
+
+# bfs(a,1)
+
+def detect_cycle(graph):
+    visit = []
+    for i in range(graph.vertices):
+        temp = graph.array[i].get_head()
+        while temp is not None:
+            if temp.data not in visit:
+                visit.append(temp.data)
+            if temp.data<visit[-1]:
+                print("LOOP")
+            temp = temp.next_element
+# detect_cycle(a)
+
+def find_mother_vertex(g):
+    res = []
+    for i in range(g.vertices):
+        result = bfs(g,i)
+        res.append(result)
+    return(max(res, key=len)[0])
+print(find_mother_vertex(a))
+# bfs(a,2)
