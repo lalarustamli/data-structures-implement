@@ -147,92 +147,51 @@ class LinkedList:
             return False
 
 
-# lst = LinkedList()
-# lst2 = LinkedList()
-# lst2.insert_at_head(2)
-# lst2.insert_at_tail(1)
-# lst2.insert_at_tail(3)
-# lst.insert_at_head(1)
-# lst.insert_at_tail(2)
-# # lst.insert_at_tail(4)
-# # lst.insert_at_value(3,0)
-# lst.insert_at_value(3,1)
-# lst.insert_at_value(1,2)
-# lst.insert_at_value(3,3)
-# lst.insert_at_value(1,4)
-# lst.insert_at_value(10,5)
-# lst.insert_at_value(5,2)
-# lst.insert_at_value(5,1)
-# lst.search(6)
-# lst.delete_at_head()
-# lst.delete_at_head()
-# lst.delete_at_head()
-# lst.insert_at_value(7,1)
-# lst.delete_value(6)
-# lst.delete_value(5)
-#
-# lst.printer()
-# lst.reverse()
-# lst.printer()
 
-# def detect_loop(lst):
-#     # Complexity: O (n^2)
-#     one_step = lst.get_head()
-#     two_step = lst.get_head()
-#     while one_step and two_step and two_step.next_element:
-#         one_step = one_step.next_element
-#         two_step = two_step.next_element.next_element
-#         if one_step == two_step:
-#             return True
-#     return False
-
-# print(lst.find_mid())
-# print(lst.length())
-# lst.remove_duplicates()
-# lst.printer()
+def detect_loop(lst):
+    # Complexity: O (n^2)
+    one_step = lst.get_head()
+    two_step = lst.get_head()
+    while one_step and two_step and two_step.next_element:
+        one_step = one_step.next_element
+        two_step = two_step.next_element.next_element
+        if one_step == two_step:
+            return True
+    return False
 
 
-# def union(lst1,lst2):
-#     l1 = lst1.get_head()
-#     l2 = lst2.get_head()
-#     while l1:
-#         while l2:
-#             if l1.data != l2.data:
-#                 lst1.insert_at_tail(l2.data)
-#             l2 = l2.next_element
-#         l1 = l1.next_element
-#     return lst1
+def union(lst1,lst2):
+    l1 = lst1.get_head()
+    l2 = lst2.get_head()
+    while l1:
+        while l2:
+            if l1.data != l2.data:
+                lst1.insert_at_tail(l2.data)
+            l2 = l2.next_element
+        l1 = l1.next_element
+    return lst1
 
 
-# def intersection(list1,list2):
-#     # Complexity : max( O(mn), O(min(m,n)^2)
-#     l = LinkedList()
-#     l2 = list2.get_head()
-#     while l2:
-#         l1 = list1.get_head()
-#         while l1:
-#             if l1.data == l2.data:
-#                 l.insert_at_tail(l2.data)
-#             l1 = l1.next_element
-#         l2 = l2.next_element
-#     l.remove_duplicates()
-#     l.printer()
-#     return l
-#
-#
-# def find_nth(lst, n):
-#     length = lst.length()
-#     temp = lst.get_head()
-#     for i in range(length-n):
-#         temp = temp.next_element
-#
-#     return temp.data
-#
-#
-# #
-# lst.printer()
-# # lst2.printer()
-# print(lst.length())
-# print(find_nth(lst,2))
-# print(union(lst,lst2))
-# intersection(lst,lst2)
+def intersection(list1,list2):
+    # Complexity : max( O(mn), O(min(m,n)^2)
+    l = LinkedList()
+    l2 = list2.get_head()
+    while l2:
+        l1 = list1.get_head()
+        while l1:
+            if l1.data == l2.data:
+                l.insert_at_tail(l2.data)
+            l1 = l1.next_element
+        l2 = l2.next_element
+    l.remove_duplicates()
+    l.printer()
+    return l
+
+
+def find_nth(lst, n):
+    length = lst.length()
+    temp = lst.get_head()
+    for i in range(length-n):
+        temp = temp.next_element
+
+    return temp.data
